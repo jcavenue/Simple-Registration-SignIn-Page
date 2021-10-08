@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { 
 	MDBContainer, 
 	MDBRow, 
@@ -27,7 +28,7 @@ const Login = () => {
 						</MDBInputGroup>
 						<button type="submit" className="btn btn-primary">Sign In</button>
 					</form>
-					<p> Don't have an account yet? <a href="#">Sign up here</a></p>
+					<p> Don't have an account yet? <Link to="/signup">Sign up here</Link></p>
 				</MDBCol>
 			</MDBRow>
 		</MDBContainer>
