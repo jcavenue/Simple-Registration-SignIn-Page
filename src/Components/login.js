@@ -19,11 +19,11 @@ const Login = () => {
 						<h4 className="my-3">Please Login </h4>
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>Email</MDBInputGroupText>
-							<MDBInputGroupElement name="email" className='rounded' id='basic-url' type='email' />
+							<MDBInputGroupElement name="email" className='rounded' id='basic-url' type='email' required/>
 						</MDBInputGroup>
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>Password</MDBInputGroupText>
-							<MDBInputGroupElement name="password"className='rounded' id='basic-url' type='password' />
+							<MDBInputGroupElement name="password"className='rounded' id='basic-url' type='password' required/>
 						</MDBInputGroup>
 						<button type="submit" className="btn btn-primary">Sign In</button>
 					</form>
