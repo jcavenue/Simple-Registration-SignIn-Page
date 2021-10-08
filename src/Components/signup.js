@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 function signUp (e) {
 	e.preventDefault();
@@ -55,4 +55,4 @@ const Signup = () => {
 	);
 };
 
-export default Signup;
+export default withRouter(Signup);
