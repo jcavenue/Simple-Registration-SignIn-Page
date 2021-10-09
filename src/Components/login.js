@@ -42,10 +42,12 @@ const Login = () => {
 							<MDBInputGroupText noBorder>Password</MDBInputGroupText>
 							<MDBInputGroupElement name="password" id='password' type='password' required/>
 						</MDBInputGroup>
-						<button type="submit" className="btn btn-primary">Sign In</button>
+						<div className="d-flex justify-content-end">	
+							<button type="submit" className="btn btn-primary">Sign In</button>
+						</div>
 					</form>
-					<p> Don't have an account yet? <Link to="/signup">Sign up here</Link></p>
 				</MDBCol>
+				<p className="text-center mt-4"> Don't have an account yet? <Link to="/signup">Sign up here</Link></p>
 			</MDBRow>
 		</MDBContainer>
 	);
