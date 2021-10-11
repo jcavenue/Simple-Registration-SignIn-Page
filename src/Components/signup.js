@@ -1,3 +1,4 @@
+import { useState } from 'react/cjs/react.development';
 import { Link, withRouter } from 'react-router-dom';
 import { 
 	MDBContainer,
@@ -8,43 +9,62 @@ import {
 	MDBInputGroupText 
 	} from "mdb-react-ui-kit";
 
-function signUp (e) {
-	e.preventDefault();
-	let fname = document.getElementById('fname').value,
-			mname = document.getElementById('mname').value,
-			lname = document.getElementById('lname').value,
-			email = document.getElementById('email').value,
-			pwd = document.getElementById('password').value;
+const Signup = () => {
+	const [ success, setSuccess ] = useState(null);
+	const [ error, setError ] = useState(null);
 
-	let formData = JSON.parse(localStorage.getItem('formData')) || [];
+	function createUser (e) {
+		e.preventDefault();
+		let fname = document.getElementById('fname').value,
+				mname = document.getElementById('mname').value,
+				lname = document.getElementById('lname').value,
+				email = document.getElementById('email').value,
+				pwd = document.getElementById('password').value;
 
-	let exist = formData.length && 
-			JSON.parse(localStorage.getItem('formData')).some(data => 
-					data.fname.toLowerCase() === fname.toLowerCase() && 
-					data.mname.toLowerCase() === mname.toLowerCase() &&
-					data.lname.toLowerCase() === lname.toLowerCase()
-			);
+		let formData = JSON.parse(localStorage.getItem('formData')) || [];
+
+		let exist = formData.length && 
+				JSON.parse(localStorage.getItem('formData')).some(data => 
+						data.fname.toLowerCase() === fname.toLowerCase() && 
+						data.mname.toLowerCase() === mname.toLowerCase() &&
+						data.lname.toLowerCase() === lname.toLowerCase()
+				);
 
 	if(!exist){
 			formData.push({ fname, mname, lname, email, pwd });
 			localStorage.setItem('formData', JSON.stringify(formData));
 			document.querySelector('form').reset();
 			document.getElementById('fname').focus();
-			alert("Account Created.\n\nPlease Sign In using the link below.");
+			setSuccess(true);
+			setError(null);
 	}
 	else{
-			alert("Ooopppssss... Duplicate found!!!\nYou have already sigjned up");
+			setError(true);
+			setSuccess(null);
 	}
 }
 
-const Signup = () => {
 	return (
 		<MDBContainer className="mt-5">
 			<MDBRow className="d-flex justify-content-center mt-5 p-2">
 				<h1 className="text-center">Sample Sign up page</h1>
 				<MDBCol className="col-md-6 shadow-3 p-3 rounded-3">
-					<form className="my-3" onSubmit={(e) => signUp(e)}>
+					<form className="my-3" onSubmit={(e) => createUser(e)}>
 						<h4 className="my-3">Fill up this form to register </h4>
+						{
+							error &&
+							<div className="alert alert-danger alert-dismissible fade show" role="alert">
+								User details already exist
+								<button type="button" className="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
+							</div>
+						}
+						{
+							success && 
+							<div class="alert alert-success alert-dismissible fade show" role="alert">
+								Account Created! <Link to="/">Click here to Sign in </Link>
+								<button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={()=> setSuccess(false)}></button>
+							</div>
+						}
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>First Name</MDBInputGroupText>
 							<MDBInputGroupElement name="fname" id="fname" className='rounded' type='text' required/>

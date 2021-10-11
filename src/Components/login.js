@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { 
 	MDBContainer, 
@@ -8,24 +9,27 @@ import {
 	MDBInputGroupText 
 	} from "mdb-react-ui-kit";
 
-		function signIn(e) {
-		e.preventDefault();
-    let email = document.getElementById('email').value;
-		let pwd = document.getElementById('password').value;
-    let formData = JSON.parse(localStorage.getItem('formData')) || [];
-    let exist = formData.length && 
-    JSON.parse(localStorage.getItem('formData')).some(data => data.email.toLowerCase() === email && data.pwd.toLowerCase() === pwd);
-    if(!exist){
-        alert("Incorrect login credentials");
-    }
-    else{
-        alert("success");
-    }
-    
-}
-
 const Login = () => {
+	const [error, setError ] = useState(null);
+	const [success, setSuccess] = useState(false);
 
+	const signIn = (e) => {
+		e.preventDefault();
+
+		let email = document.getElementById('email').value;
+		let pwd = document.getElementById('password').value;
+		let formData = JSON.parse(localStorage.getItem('formData')) || [];
+		let exist = formData.length && JSON.parse(localStorage.getItem('formData')).some(data => data.email.toLowerCase() === email && data.pwd.toLowerCase() === pwd);
+		
+		if(!exist){
+			setError(true);
+			setSuccess(false);
+		}
+		else{
+			setSuccess(true);
+			setError(false);
+		} 
+	}
 
 	return (	
 		<MDBContainer className="mt-5">
@@ -34,6 +38,17 @@ const Login = () => {
 				<MDBCol className="col-md-6 shadow-3 p-3 rounded-3">
 					<form className="my-3" onSubmit={(e) => signIn(e)}>
 						<h4 className="my-3">Please Login </h4>
+						{
+							error &&
+							<div className="alert alert-danger alert-dismissible fade show" role="alert">
+								Login Details Incorrect
+								<button type="button" className="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
+							</div>
+						}
+						{
+							success && <p>success</p>
+						}
+				
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>Email</MDBInputGroupText>
 							<MDBInputGroupElement name="email" id="email" className='rounded' type='email' required/>
