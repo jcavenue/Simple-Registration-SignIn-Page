@@ -13,7 +13,8 @@ const Signup = () => {
 	const [ success, setSuccess ] = useState(null);
 	const [ error, setError ] = useState(null);
 
-	function createUser (e) {
+	// Create user and store in Local Storage
+	const createUser = (e) => {
 		e.preventDefault();
 		let fname = document.getElementById('fname').value,
 				mname = document.getElementById('mname').value,
@@ -30,19 +31,19 @@ const Signup = () => {
 						data.lname.toLowerCase() === lname.toLowerCase()
 				);
 
-	if(!exist){
+		if(!exist){
 			formData.push({ fname, mname, lname, email, pwd });
 			localStorage.setItem('formData', JSON.stringify(formData));
 			document.querySelector('form').reset();
 			document.getElementById('fname').focus();
 			setSuccess(true);
 			setError(null);
-	}
-	else{
+
+		} else {
 			setError(true);
 			setSuccess(null);
+		}
 	}
-}
 
 	return (
 		<MDBContainer className="mt-5">
@@ -51,6 +52,8 @@ const Signup = () => {
 				<MDBCol className="col-md-6 shadow-3 p-3 rounded-3">
 					<form className="my-3" onSubmit={(e) => createUser(e)}>
 						<h4 className="my-3">Fill up this form to register </h4>
+
+						{/* Flash Messages */}
 						{
 							error &&
 							<div className="alert alert-danger alert-dismissible fade show" role="alert">
@@ -65,6 +68,8 @@ const Signup = () => {
 								<button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={()=> setSuccess(false)}></button>
 							</div>
 						}
+						{/* Flash Messages end */}
+
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>First Name</MDBInputGroupText>
 							<MDBInputGroupElement name="fname" id="fname" className='rounded' type='text' required/>
