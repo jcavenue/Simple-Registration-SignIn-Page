@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { 
 	MDBContainer, 
 	MDBRow, 
@@ -10,24 +10,27 @@ import {
 	} from "mdb-react-ui-kit";
 
 const Login = () => {
+	let history = useHistory();
 	const [error, setError ] = useState(null);
-	const [success, setSuccess] = useState(false);
 
-	const signIn = (e) => {
+	// Authenticate User if exist
+	const authenticate = (e) => {
 		e.preventDefault();
-
 		let email = document.getElementById('email').value;
 		let pwd = document.getElementById('password').value;
 		let formData = JSON.parse(localStorage.getItem('formData')) || [];
 		let exist = formData.length && JSON.parse(localStorage.getItem('formData')).some(data => data.email.toLowerCase() === email && data.pwd.toLowerCase() === pwd);
 		
+		
 		if(!exist){
 			setError(true);
-			setSuccess(false);
-		}
-		else{
-			setSuccess(true);
-			setError(false);
+		} else {
+
+			// Redirect user to dashboard if authenticated
+			history.push({
+				pathname: '/dashboard',
+				state: { isAuth: true, userDetails: email}
+			})
 		} 
 	}
 
@@ -36,8 +39,10 @@ const Login = () => {
 			<MDBRow  className="d-flex justify-content-center mt-5 p-2">
 				<h1 className="text-center">Sample Login Page</h1>
 				<MDBCol className="col-md-6 shadow-3 p-3 rounded-3">
-					<form className="my-3" onSubmit={(e) => signIn(e)}>
+					<form className="my-3" onSubmit={(e) => authenticate(e)}>
 						<h4 className="my-3">Please Login </h4>
+						
+						{/* Flash Message error */}
 						{
 							error &&
 							<div className="alert alert-danger alert-dismissible fade show" role="alert">
@@ -45,10 +50,7 @@ const Login = () => {
 								<button type="button" className="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
 							</div>
 						}
-						{
-							success && <p>success</p>
-						}
-				
+						
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>Email</MDBInputGroupText>
 							<MDBInputGroupElement name="email" id="email" className='rounded' type='email' required/>
