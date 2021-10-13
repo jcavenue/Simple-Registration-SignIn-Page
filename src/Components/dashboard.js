@@ -1,6 +1,9 @@
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 
-const Dashboard = () => {
+const Dashboard = ({isAuth}) => {
+	if(!isAuth){
+		return <Redirect to="/"/>
+	}
 	return (
 		<h1>Hello</h1>
 	);
