@@ -5,7 +5,7 @@ import Dashboard from './Components/dashboard';
 
 function App() {
   return (
-    <Router>
+    <Router basename="/simple-registration-signin-page">
 			<Switch>
 				<Route path="/signup" component={Signup}/>
 				<Route path="/dashboard" component={Dashboard} />	
