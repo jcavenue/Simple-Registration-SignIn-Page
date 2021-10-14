@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.87839887.chunk.css",
-    "main.js": "./static/js/main.26b43fc4.chunk.js",
-    "main.js.map": "./static/js/main.26b43fc4.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.8cdd2cf5.js",
-    "runtime-main.js.map": "./static/js/runtime-main.8cdd2cf5.js.map",
-    "static/css/2.a5f88754.chunk.css": "./static/css/2.a5f88754.chunk.css",
-    "static/js/2.739ce36f.chunk.js": "./static/js/2.739ce36f.chunk.js",
-    "static/js/2.739ce36f.chunk.js.map": "./static/js/2.739ce36f.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/2.a5f88754.chunk.css.map": "./static/css/2.a5f88754.chunk.css.map",
-    "static/css/main.87839887.chunk.css.map": "./static/css/main.87839887.chunk.css.map",
-    "static/js/2.739ce36f.chunk.js.LICENSE.txt": "./static/js/2.739ce36f.chunk.js.LICENSE.txt"
+    "main.css": "/simple-registration-signin-page/static/css/main.87839887.chunk.css",
+    "main.js": "/simple-registration-signin-page/static/js/main.800ebb65.chunk.js",
+    "main.js.map": "/simple-registration-signin-page/static/js/main.800ebb65.chunk.js.map",
+    "runtime-main.js": "/simple-registration-signin-page/static/js/runtime-main.9f794fbd.js",
+    "runtime-main.js.map": "/simple-registration-signin-page/static/js/runtime-main.9f794fbd.js.map",
+    "static/css/2.a5f88754.chunk.css": "/simple-registration-signin-page/static/css/2.a5f88754.chunk.css",
+    "static/js/2.739ce36f.chunk.js": "/simple-registration-signin-page/static/js/2.739ce36f.chunk.js",
+    "static/js/2.739ce36f.chunk.js.map": "/simple-registration-signin-page/static/js/2.739ce36f.chunk.js.map",
+    "index.html": "/simple-registration-signin-page/index.html",
+    "static/css/2.a5f88754.chunk.css.map": "/simple-registration-signin-page/static/css/2.a5f88754.chunk.css.map",
+    "static/css/main.87839887.chunk.css.map": "/simple-registration-signin-page/static/css/main.87839887.chunk.css.map",
+    "static/js/2.739ce36f.chunk.js.LICENSE.txt": "/simple-registration-signin-page/static/js/2.739ce36f.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.8cdd2cf5.js",
+    "static/js/runtime-main.9f794fbd.js",
     "static/css/2.a5f88754.chunk.css",
     "static/js/2.739ce36f.chunk.js",
     "static/css/main.87839887.chunk.css",
-    "static/js/main.26b43fc4.chunk.js"
+    "static/js/main.800ebb65.chunk.js"
   ]
 }
