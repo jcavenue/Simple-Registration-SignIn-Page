@@ -1,4 +1,4 @@
-import { useState } from 'react/cjs/react.development';
+import { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { 
 	MDBContainer,
@@ -65,7 +65,7 @@ const Signup = () => {
 							success && 
 							<div class="alert alert-success alert-dismissible fade show" role="alert">
 								Account Created! <Link to="/">Click here to Sign in </Link>
-								<button type="button" class="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={()=> setSuccess(false)}></button>
+								<button type="button" className="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={()=> setSuccess(false)}></button>
 							</div>
 						}
 						{/* Flash Messages end */}
