@@ -21,15 +21,15 @@ const Login = () => {
 		let formData = JSON.parse(localStorage.getItem('formData')) || [];
 		let exist = formData.length && JSON.parse(localStorage.getItem('formData')).some(data => data.email.toLowerCase() === email && data.pwd.toLowerCase() === pwd);
 		
-		
 		if(!exist){
 			setError(true);
 		} else {
-
+			const data = formData.filter(data => data.email === email && data.pwd === pwd);
+			formData = [];
 			// Redirect user to dashboard if authenticated
 			history.push({
 				pathname: '/dashboard',
-				state: { isAuth: true, userDetails: email}
+				state: { isAuth: true, userData: data[0]}
 			})
 		} 
 	}
@@ -37,7 +37,7 @@ const Login = () => {
 	return (	
 		<MDBContainer className="mt-5">
 			<MDBRow  className="d-flex justify-content-center mt-5 p-2">
-				<h1 className="text-center">Sample Login Page</h1>
+				<h1 className="text-center">Simple Login Page</h1>
 				<MDBCol className="col-md-6 shadow-3 p-3 rounded-3">
 					<form className="my-3" onSubmit={(e) => authenticate(e)}>
 						<h4 className="my-3">Please Login </h4>
@@ -50,6 +50,7 @@ const Login = () => {
 								<button type="button" className="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
 							</div>
 						}
+						{/* Flash Message error end */}
 						
 						<MDBInputGroup className='mb-3'>
 							<MDBInputGroupText noBorder>Email</MDBInputGroupText>

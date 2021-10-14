@@ -24,12 +24,7 @@ const Signup = () => {
 
 		let formData = JSON.parse(localStorage.getItem('formData')) || [];
 
-		let exist = formData.length && 
-				JSON.parse(localStorage.getItem('formData')).some(data => 
-						data.fname.toLowerCase() === fname.toLowerCase() && 
-						data.mname.toLowerCase() === mname.toLowerCase() &&
-						data.lname.toLowerCase() === lname.toLowerCase()
-				);
+		let exist = formData.length && JSON.parse(localStorage.getItem('formData')).some(data => data.email.toLowerCase() === email.toLowerCase() );
 
 		if(!exist){
 			formData.push({ fname, mname, lname, email, pwd });
@@ -48,7 +43,7 @@ const Signup = () => {
 	return (
 		<MDBContainer className="mt-5">
 			<MDBRow className="d-flex justify-content-center mt-5 p-2">
-				<h1 className="text-center">Sample Sign up page</h1>
+				<h1 className="text-center">Simple Sign up page</h1>
 				<MDBCol className="col-md-6 shadow-3 p-3 rounded-3">
 					<form className="my-3" onSubmit={(e) => createUser(e)}>
 						<h4 className="my-3">Fill up this form to register </h4>
@@ -57,7 +52,7 @@ const Signup = () => {
 						{
 							error &&
 							<div className="alert alert-danger alert-dismissible fade show" role="alert">
-								User details already exist
+								User email already exist
 								<button type="button" className="btn-close" data-mdb-dismiss="alert" aria-label="Close" onClick={() => setError(null)}></button>
 							</div>
 						}
